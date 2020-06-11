@@ -12,6 +12,7 @@ export default function RedditListContainer() {
     const {loading, posts, after} = useRedditSearch(redditUrl)
 
     const observer = useRef()
+
     const lastPostRef = useCallback(element =>{
         if (loading){
             return
@@ -42,7 +43,6 @@ export default function RedditListContainer() {
                 }
                 return <RedditListItem post={post} key={post.title}/>
             })}
-            {loading && 'Loading...'}
         </div>
     )
 }

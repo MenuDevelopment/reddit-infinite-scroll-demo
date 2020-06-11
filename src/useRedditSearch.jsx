@@ -12,7 +12,9 @@ export default function useRedditSearch ( redditUrl){
             const data = response?.data?.data
             setAfter(data.after)
             const posts = data.children.map(post => {
-                const {title, thumbnail, subreddit, permalink} = post.data
+                const {title, thumbnail, subreddit} = post.data
+                let {permalink} = post.data
+                permalink = 'https://www.reddit.com/' + permalink
                 return {title, thumbnail, subreddit, permalink}
                 
             })
