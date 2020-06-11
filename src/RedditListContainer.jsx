@@ -1,15 +1,16 @@
-import React, {useState, useEffect, useRef, useCallback} from 'react'
+import React, {useState, useRef, useCallback} from 'react'
 import RedditListItem from './RedditListItem'
-import axios from 'axios'
+import useRedditSearch from './useRedditSearch'
 
-const redditUrl = "https://www.reddit.com/r/aww/top.json"
+const BASE_URL = 'https://www.reddit.com/r/aww/top.json'
+
+
 
 export default function RedditListContainer() {
 
+    const [redditUrl, setRedditUrl] = useState(BASE_URL)
+    const {loading, posts, after} = useRedditSearch(redditUrl)
 
-    let [loading, setLoading] = useState(true)
-    let [after, setAfter] = useState('')
-    let [posts, setPosts] = useState([])
     const observer = useRef()
     const lastPostRef = useCallback(element =>{
         if (loading){
@@ -19,33 +20,19 @@ export default function RedditListContainer() {
             observer.current.disconnect()
         }
         observer.current = new IntersectionObserver(entries => {
-            if (entries[0].isIntersecting) {
-                console.log('last post visibile')
+            if (entries[0].isIntersecting && !loading) {
+                setRedditUrl(BASE_URL + `?after=${after}`)
             }
         })
         if (element) {
             observer.current.observe(element)
         }
-    }, [loading])
+    }, [after, loading])
+    if (loading) console.log(loading)
 
-    useEffect(()=>{
-        setLoading(true)
-        axios.get(redditUrl).then(response => {
-            const data = response?.data?.data
-            const posts = data.children.map(post => {
-                const {title, thumbnail, subreddit, permalink} = post.data
-                return {title, thumbnail, subreddit, permalink}
-                
-            })
-            setPosts(prevPosts => [...prevPosts, ...posts])
-
-        })
-        setLoading(false)
-    }, [])
 
     return (
         <div>
-            {loading && 'Loading...'}
             {posts.map((post, index) => {
                 if (index === posts.length -1){
                     return( 
@@ -56,6 +43,7 @@ export default function RedditListContainer() {
                 }
                 return <RedditListItem post={post} key={post.title}/>
             })}
+            {loading && 'Loading...'}
         </div>
     )
 }
