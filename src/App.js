@@ -4,9 +4,7 @@ import RedditListContainer from './RedditListContainer'
 function App() {
   return (
     <div>
-      Hello World
-
-    <RedditListContainer/>
+      <RedditListContainer/>
     </div>
   );
 }

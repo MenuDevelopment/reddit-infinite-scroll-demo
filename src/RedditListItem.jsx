@@ -7,9 +7,12 @@ export default function RedditListItem({post}) {
     const {title, thumbnail, subreddit, permalink } = post
     return (
         <div>
-            <div className='imageHolder'>{thumbnail}</div>
             <span>{title}</span>
-            <span>{`Originally posted to r/${subreddit}`} </span>
+            <div className='imageHolder'>
+                <img src={thumbnail} alt="Thumbnail failed to load" />
+            </div>
+            <div>{`Originally posted to r/${subreddit}`} </div>
+            <br/>
         </div>
     )
 }
