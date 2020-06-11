@@ -28,7 +28,6 @@ export default function RedditListContainer() {
             observer.current.observe(element)
         }
     }, [after, loading])
-    if (loading) console.log(loading)
 
 
     return (
