@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.js": "/reddit-infinite-scroll-demo/static/js/main.0e14fdfd.chunk.js",
+    "main.js.map": "/reddit-infinite-scroll-demo/static/js/main.0e14fdfd.chunk.js.map",
+    "runtime-main.js": "/reddit-infinite-scroll-demo/static/js/runtime-main.20b54e83.js",
+    "runtime-main.js.map": "/reddit-infinite-scroll-demo/static/js/runtime-main.20b54e83.js.map",
+    "static/js/2.df284a88.chunk.js": "/reddit-infinite-scroll-demo/static/js/2.df284a88.chunk.js",
+    "static/js/2.df284a88.chunk.js.map": "/reddit-infinite-scroll-demo/static/js/2.df284a88.chunk.js.map",
+    "index.html": "/reddit-infinite-scroll-demo/index.html",
+    "precache-manifest.2e44935fb27654b829f4309bbe00c8b7.js": "/reddit-infinite-scroll-demo/precache-manifest.2e44935fb27654b829f4309bbe00c8b7.js",
+    "service-worker.js": "/reddit-infinite-scroll-demo/service-worker.js",
+    "static/js/2.df284a88.chunk.js.LICENSE.txt": "/reddit-infinite-scroll-demo/static/js/2.df284a88.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.20b54e83.js",
+    "static/js/2.df284a88.chunk.js",
+    "static/js/main.0e14fdfd.chunk.js"
+  ]
+}
